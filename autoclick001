@@ -1,0 +1,35 @@
+set x1 to 1204
+set y1 to 362
+set x2 to 1231
+set y2 to 243
+
+activate application "Andy"
+do shell script "
+/usr/bin/python <<END
+import sys
+import time
+import random
+from Quartz.CoreGraphics import *
+
+random.seed();
+def mEvent(type, posx, posy):
+          theEvent = CGEventCreateMouseEvent(None, type, (posx,posy), kCGMouseButtonLeft)
+          CGEventPost(kCGHIDEventTap, theEvent)
+def doClick(posx,posy):
+          mEvent(kCGEventLeftMouseDown, posx,posy);
+          mEvent(kCGEventLeftMouseUp, posx,posy);
+for i in xrange(300):
+	r = random.random();
+	d1 = 1;
+	d2 = .5;
+	n = r + d1 ; 
+	n1 = r +d2
+	doClick(" & x1 & "," & y1 & ");
+	time.sleep(n);
+	doClick(" & x2 & "," & y2 & ");
+	time.sleep(n)
+END"
+
+on quit
+	continue quit
+end quit
