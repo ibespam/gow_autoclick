@@ -20,13 +20,14 @@ def doClick(posx,posy):
           mEvent(kCGEventLeftMouseUp, posx,posy);
 for i in xrange(300):
 	r = random.random();
-	d1 = 1;
-	d2 = .5;
+	d1 = 1; # wait time after chest open
+	d2 = .5; #wait time after x is clicked
+	#the next two variables insert a random pause to each wait time to confound those listening for autoclicks
 	n = r + d1 ; 
 	n1 = r +d2
 	doClick(" & x1 & "," & y1 & ");
 	time.sleep(n);
-	doClick(" & x2 & "," & y2 & ");
+	doClick(" & x2 & "," & y2 & "); #delete this line and the one after for rss open
 	time.sleep(n)
 END"
 
